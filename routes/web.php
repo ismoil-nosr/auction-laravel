@@ -13,6 +13,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Auth section
+ */
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/sign-up', function () {
+    return view('auth.sign-up');
+});
+
+/**
+ * Lot page
+ */
+Route::get('/lot', function () {
+    return view('lot.lot');
+});
+
+Route::get('/add-lot', function () {
+    return view('lot.add-lot');
+});
+
+/**
+ * Other pages
+ */
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/all-lots', function () {
+    return view('pages.all-lots');
+});
+
+Route::get('/my-lots', function () {
+    return view('pages.my-lots');
+});
+
+Route::get('/search', function () {
+    return view('pages.search');
 });
