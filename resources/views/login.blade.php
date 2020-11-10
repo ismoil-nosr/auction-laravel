@@ -2,7 +2,6 @@
 
 @section('content')
 <form class="form container @error('email') form--invalid @enderror" action="{{ route('login') }}" method="post">
-  @csrf
   <h2>{{ __('Login') }}</h2>
   <div class="form__item @error('email') form__item--invalid @enderror">
       <label for="email">{{ __('E-Mail Address') }}</label>
@@ -14,7 +13,7 @@
   </div>
   <div class="form__item @error('email') form__item--invalid @enderror">
       <label for="password">{{ __('Password') }}</label>
-      <input id="password" type="password" name="password" placeholder="Введите пароль" required>
+      <input id="password" type="text" name="password" placeholder="Введите пароль" required>
       
       @error('password')
         <span class="form__error">{{ $message }}</span>
@@ -22,10 +21,10 @@
     
   </div>
 
-  <div class="form__item--last" >
-    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+  <div class="form__item form__item--last">
+    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-    <label class="form-check-label" for="remember">
+    <label for="remember">
         {{ __('Remember Me') }}
     </label>
   </div>

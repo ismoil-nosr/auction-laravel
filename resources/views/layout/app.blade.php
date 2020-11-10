@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Главная</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="/css/normalize.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
 </head>

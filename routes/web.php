@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,13 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/sign-up', function () {
-    return view('auth.sign-up');
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
 });
 
 /**
@@ -53,3 +59,7 @@ Route::get('/my-lots', function () {
 Route::get('/search', function () {
     return view('pages.search');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
