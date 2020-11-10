@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,10 +49,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/all-lots', function () {
-    return view('pages.all-lots');
-});
-
 Route::get('/my-lots', function () {
     return view('pages.my-lots');
 });
@@ -60,6 +57,6 @@ Route::get('/search', function () {
     return view('pages.search');
 });
 
-Auth::routes();
+Route::resource('categories', CategoryController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();

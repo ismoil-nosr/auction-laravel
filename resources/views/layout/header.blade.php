@@ -7,7 +7,7 @@
         <input type="search" name="search" placeholder="Поиск лота">
         <input class="main-header__search-btn" type="submit" name="find" value="Найти">
     </form>
-    <a class="main-header__add-lot button" href="add-lot">Добавить лот</a>
+    <a class="main-header__add-lot button" href="/add-lot">Добавить лот</a>
     
     @if (Auth::user())
         <nav class="user-menu">

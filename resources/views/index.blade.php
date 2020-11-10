@@ -5,24 +5,11 @@
     <h2 class="promo__title">Нужен стафф для катки?</h2>
     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
     <ul class="promo__list">
-        <li class="promo__item promo__item--boards">
-            <a class="promo__link" href="all-lots">Доски и лыжи</a>
-        </li>
-        <li class="promo__item promo__item--attachment">
-            <a class="promo__link" href="all-lots">Крепления</a>
-        </li>
-        <li class="promo__item promo__item--boots">
-            <a class="promo__link" href="all-lots">Ботинки</a>
-        </li>
-        <li class="promo__item promo__item--clothing">
-            <a class="promo__link" href="all-lots">Одежда</a>
-        </li>
-        <li class="promo__item promo__item--tools">
-            <a class="promo__link" href="all-lots">Инструменты</a>
-        </li>
-        <li class="promo__item promo__item--other">
-            <a class="promo__link" href="all-lots">Разное</a>
-        </li>
+        @foreach ($categories as $item)
+            <li class="promo__item promo__item--boards">
+                <a class="promo__link" href="/categories/{{ $item->slug }}">{{ $item->name }}</a>
+            </li>
+        @endforeach
     </ul>
 </section>
 <section class="lots">

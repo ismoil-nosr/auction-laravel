@@ -1,23 +1,10 @@
 <nav class="nav">
     <ul class="nav__list container">
+      @foreach ($categories as $item)
         <li class="nav__item">
-            <a href="all-lots">Доски и лыжи</a>
+            <a href="/categories/{{ $item->slug }}">{{ $item->name }}</a>
         </li>
-        <li class="nav__item">
-            <a href="all-lots">Крепления</a>
-        </li>
-        <li class="nav__item">
-            <a href="all-lots">Ботинки</a>
-        </li>
-        <li class="nav__item">
-            <a href="all-lots">Одежда</a>
-        </li>
-        <li class="nav__item">
-            <a href="all-lots">Инструменты</a>
-        </li>
-        <li class="nav__item">
-            <a href="all-lots">Разное</a>
-        </li>
+      @endforeach
     </ul>
 </nav>
 <div class="main-footer__bottom container">
