@@ -46,10 +46,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/add-lot', [LotController::class, 'create']);
     Route::post('/add-lot', [LotController::class, 'store']);
 
-    Route::get('/{lot}/edit', [LotController::class, 'edit']);
-    Route::patch('/{lot}', [LotController::class, 'update']);
+    Route::get('/{lot}/edit', [LotController::class, 'edit'])->middleware('can:edit,lot');
+    Route::patch('/{lot}', [LotController::class, 'update'])->middleware('can:update,lot');
 
-    Route::delete('/{lot}', [LotController::class, 'destroy']);
+    Route::delete('/{lot}', [LotController::class, 'destroy'])->middleware('can:destroy,lot');
 });
 
 

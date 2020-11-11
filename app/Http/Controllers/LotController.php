@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class LotController extends Controller
 {
-
     /**
      * Show the form for creating a new model.
      *
