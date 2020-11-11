@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class LotController extends Controller
 {
+    public function index()
+    {
+        $lots = Lot::paginate(9);
+        return view('lot.index', compact('lots'));
+    }
+
     /**
      * Show the form for creating a new model.
      *

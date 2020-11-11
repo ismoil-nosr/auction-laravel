@@ -43,6 +43,8 @@ Route::get('/categories/{category}', [CategoryController::class, 'show']);
  * Lot routes
  */
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/lots', [LotController::class, 'index']);
+
     Route::get('/add-lot', [LotController::class, 'create']);
     Route::post('/add-lot', [LotController::class, 'store']);
 

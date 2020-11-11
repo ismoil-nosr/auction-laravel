@@ -1,23 +1,11 @@
 @extends('layout.app')
 
 @section('content')
-<section class="promo">
-    <h2 class="promo__title">Нужен стафф для катки?</h2>
-    <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
-    <ul class="promo__list">
-        @foreach ($categories as $item)
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="/categories/{{ $item->slug }}">{{ $item->name }}</a>
-            </li>
-        @endforeach
-    </ul>
-</section>
-<section class="lots">
-    <div class="lots__header">
-        <h2><a href="/lots">Открытые лоты</a></h2>
-    </div>
-    <ul class="lots__list">
-        @foreach ($lots as $lot)
+<div class="container">
+  <section class="lots">
+      <h2>Все открытые лоты</span></h2>
+      <ul class="lots__list">
+          @foreach ($lots as $lot)
             <li class="lots__item lot">
                 <div class="lot__image">
                     <img src="/storage/{{ $lot->img }}" width="350" height="260" alt="{{ $lot->name }}">
@@ -36,7 +24,11 @@
                     </div>
                 </div>
             </li>
-        @endforeach
-    </ul>
-</section>
+          @endforeach
+      </ul>
+  </section>
+  
+  {{ $lots->links() }}
+  
+</div>
 @endsection

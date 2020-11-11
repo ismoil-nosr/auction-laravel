@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lots = Lot::with('category')->get();
+        $lots = Lot::with('category')->simplePaginate(9);
         return view('index', compact('lots'));
     }
 }

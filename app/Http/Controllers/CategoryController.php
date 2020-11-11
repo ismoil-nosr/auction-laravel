@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $lots = $category->lots()->get();
+        $lots = $category->lots()->paginate(9);
         return view('category.lots', compact('category', 'lots'));
     }
 }
