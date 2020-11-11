@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-<form class="form container @error('email') form--invalid @enderror" action="{{ route('login') }}" method="post">
+<form class="form container {{ count($errors) ? 'form--invalid' : ''}}" action="{{ route('login') }}" method="post">
   @csrf
   <h2>{{ __('Login') }}</h2>
   <div class="form__item @error('email') form__item--invalid @enderror">

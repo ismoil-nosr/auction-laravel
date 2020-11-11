@@ -7,12 +7,13 @@
         <input type="search" name="search" placeholder="Поиск лота">
         <input class="main-header__search-btn" type="submit" name="find" value="Найти">
     </form>
-    <a class="main-header__add-lot button" href="/add-lot">Добавить лот</a>
     
     @if (Auth::user())
+        <a class="main-header__add-lot button" href="/add-lot">Добавить лот</a>
+
         <nav class="user-menu">
             <div class="user-menu__image">
-                <img src="/uploads/avatar/{{ Auth::user()->avatar }}" width="40" height="40" alt="Пользователь">
+                <img src="/storage/{{ Auth::user()->avatar }}" width="40" height="40" alt="Пользователь">
             </div>
             <div class="user-menu__logged">
                 <p>{{ Auth::user()->name }}</p>

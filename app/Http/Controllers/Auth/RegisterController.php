@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use \Image;
 
 class RegisterController extends Controller
 {
@@ -51,10 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'contacts' => ['required', 'string', 'max:500'],
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'  => ['required', 'string', 'min:8', 'confirmed'],
+            'contacts'  => ['required', 'string', 'max:500'],
+            'avatar'    => ['file', 'image'],
         ]);
     }
 
@@ -66,13 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $request = app('request');
-
-        if ($request->hasFile('avatar')) {
-            $avatar =  $request->file('avatar');
-            $filename = md5($data['email']) . '_' . time() . '.' . $avatar->getClientOriginalExtension();
-            
-            \Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatar/' . $filename));
+        if (request()->hasFile('avatar')) {
+            $filename = request()->avatar->store('avatar');
         }
 
         return User::create([

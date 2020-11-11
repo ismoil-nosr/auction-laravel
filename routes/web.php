@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,31 +34,44 @@ Route::get('/logout', function () {
 });
 
 /**
- * Lot page
+ * Category resource
  */
-Route::get('/lot', function () {
-    return view('lot.lot');
-});
-
-Route::get('/add-lot', function () {
-    return view('lot.add-lot');
-});
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 /**
- * Other pages
+ * Lot routes
  */
-Route::get('/', function () {
-    return view('index');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/add-lot', [LotController::class, 'create']);
+    Route::post('/add-lot', [LotController::class, 'store']);
+
+    Route::get('/{lot}/edit', [LotController::class, 'edit']);
+    Route::patch('/{lot}', [LotController::class, 'update']);
+
+    Route::delete('/{lot}', [LotController::class, 'destroy']);
 });
 
+
+/**
+ * Others
+ */
+Route::get('/', [HomeController::class, 'index']);
+
+/**
+ * User's lots 
+ */
 Route::get('/my-lots', function () {
     return view('pages.my-lots');
 });
 
+/**
+ * Search 
+ */
 Route::get('/search', function () {
     return view('pages.search');
 });
 
-Route::resource('categories', CategoryController::class);
+Route::get('/{lot}', [LotController::class, 'show']);
 
 Auth::routes();

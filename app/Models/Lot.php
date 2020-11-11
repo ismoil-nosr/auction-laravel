@@ -6,11 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Category extends Model
+class Lot extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['name', 'img'];
+    protected $dates = [
+        'dt_end',
+    ];
+
+    protected $fillable = [
+        'name', 
+        'description', 
+        'category_id', 
+        'img', 
+        'price', 
+        'step', 
+        'dt_end', 
+        'user_id', 
+    ];
 
     public function getRouteKeyName()
     {
@@ -31,8 +44,13 @@ class Category extends Model
         ];
     }
 
-    public function lots()
+    public function user()
     {
-        return $this->hasMany(Lot::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

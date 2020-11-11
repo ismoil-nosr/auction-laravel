@@ -1,7 +1,7 @@
 @extends('layout.app') 
 
 @section('content')
-<form class="form container @error('email') form--invalid @enderror" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+<form class="form container {{ count($errors) ? 'form--invalid' : ''}}" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
     @csrf
     <h2>{{ __('Register') }}</h2>
     <div class="form__item @error('email') form__item--invalid @enderror">
@@ -41,11 +41,11 @@
             <span class="form__error">{{ $message }}</span>
         @enderror
     </div>
-    <div class="form__item form__item--file form__item--last">
+    <div class="form__item form__item--file form__item--last {{ old('avatar') ? 'form__item--uploaded' : ''}}">
         <label>Аватар</label>
         <div class="preview">
             <button class="preview__remove" type="button">x</button>
-            <div class="preview__img {{ old('avatar') ? 'form__item--uploaded' : ''}}">
+            <div class="preview__img">
                 <img src="/uploads/avatar/{{ old('avatar') }}" width="113" height="113" alt="Ваш аватар">
             </div>
         </div>
