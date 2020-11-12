@@ -4,6 +4,7 @@ use App\Http\Controllers\BidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LotController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -75,10 +76,11 @@ Route::get('/my-lots', function () {
 /**
  * Search 
  */
-Route::get('/search', function () {
-    return view('pages.search');
-});
+Route::post('/search', [SearchController::class, 'show']);
 
+/**
+ * Custom lot route
+ */
 Route::get('/{lot}', [LotController::class, 'show']);
 
 Auth::routes();
