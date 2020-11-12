@@ -1222,6 +1222,7 @@ input:invalid .form__error{
 
 .rates__item--win {
   background-color: #45abde;
+  color: white;
 }
 
 .rates__item--win .rates__title a,

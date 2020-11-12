@@ -16,7 +16,7 @@
             <div class="lot-item__right">
                 <div class="lot-item__state">
                     <div class="lot-item__timer timer">
-                        {{ getLastHours($lot->dt_end) }}
+                        {{ $lot->getTimeRemaing() ?: 'Торги окончены'}}
                     </div>
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">
@@ -31,14 +31,14 @@
                         @csrf
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>
-                            <input id="cost" type="number" name="price" placeholder="{{ $lot->getBidPrice() }}" min="{{ $lot->getBidPrice() }}">
+                            <input id="cost" type="number" name="price" placeholder="{{ $lot->getBidPrice() }}" min="{{ $lot->getBidPrice() }}" {{ !$lot->isActive() ? 'disabled' : '' }}>
                         </p>
 
                         @error('price')
                          {{ $message }}
                         @enderror
 
-                        <button type="submit" class="button">Сделать ставку</button>
+                        <button type="submit" class="button" {{ !$lot->isActive() ? 'disabled' : '' }}>Сделать ставку</button>
                     </form>
                 </div>
                 <div class="history">
@@ -50,10 +50,10 @@
                             <th class="history__time">Время</th>
                         </tr>
                         @foreach ($bids as $bid)
-                            <tr class="history__item">
+                            <tr class="history__item {{ $bid->isWinner() ? 'rates__item--win' : ''}}">
                                 <td class="history__name">{{ $bid->user->name }}</td>
                                 <td class="history__price">{{ $bid->price }}</td>
-                                <td class="">{{ getLastHours($bid->created_at) }}</td>
+                                <td class="">{{ $bid->getBiddedTime() }}</td>
                             </tr>                            
                         @endforeach
                     </table>

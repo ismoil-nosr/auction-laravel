@@ -17,7 +17,7 @@
                 <img src="/storage/{{ Auth::user()->avatar }}" width="40" height="40" alt="Пользователь">
             </div>
             <div class="user-menu__logged">
-                <p>{{ Auth::user()->name }}</p>
+                <p><a href="/my-lots">{{ Auth::user()->name }}</a></p>
                 <a href="/logout">Выйти</a>
             </div>
     @else

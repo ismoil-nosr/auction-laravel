@@ -14,7 +14,7 @@ class SearchController extends Controller
         ]);
 
         $title = $request->search;
-        $lots = Lot::where('name', 'like', $title . '%')->latest()->paginate(9);
+        $lots = Lot::where('name', 'like', '%' . $title . '%')->latest()->paginate(9);
         return view('pages.search', compact('lots', 'title'));
     }
 }

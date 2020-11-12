@@ -10,7 +10,7 @@ class LotController extends Controller
 {
     public function index()
     {
-        $lots = Lot::paginate(9);
+        $lots = Lot::activeLots()->latest()->paginate(9);
         return view('lot.list', compact('lots'));
     }
 

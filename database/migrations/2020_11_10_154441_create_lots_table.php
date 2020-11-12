@@ -21,7 +21,8 @@ class CreateLotsTable extends Migration
             $table->string('img');
             $table->float('price');
             $table->integer('step');
-            $table->date('dt_end');
+            $table->boolean('active')->default(true);
+            $table->timestamp('dt_end');
 
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();

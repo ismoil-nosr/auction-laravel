@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -83,5 +85,27 @@ class Lot extends Model
     public function bids()
     {
         return $this->hasMany(Bid::class);
+    }
+
+    public function isActive()
+    {
+        return $this->dt_end > Carbon::now();
+    }
+
+    public function getTimeRemaing()
+    {
+        $r =  $this->dt_end->diffForHumans(['syntax' => CarbonInterface::DIFF_ABSOLUTE], null, true, 2);
+        
+        if ($this->dt_end < $this->dt_end ->now()) {
+            $this->active = false; 
+            $this->save(); // maybe should queue??
+            $r = false;
+        }
+        
+        return $r;
+    }
+
+    public function scopeActiveLots($query) {
+        return $query->where('active', true);
     }
 }

@@ -71,7 +71,7 @@ Route::get('/', [HomeController::class, 'index']);
  */
 Route::get('/my-lots', function () {
     return view('pages.my-lots');
-});
+})->middleware('auth');
 
 /**
  * Search 

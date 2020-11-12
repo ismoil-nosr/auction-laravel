@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utilities\TimeRemainingUtility;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,5 +20,15 @@ class Bid extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getBiddedTime()
+    {
+        return $this->created_at->format('H:i:s');
+    }
+
+    public function isWinner()
+    {
+        return $this->latest()->first()->id === $this->id;
     }
 }
