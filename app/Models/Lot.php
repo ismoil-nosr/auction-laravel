@@ -25,6 +25,32 @@ class Lot extends Model
         'user_id', 
     ];
 
+    /**
+     * Get bidding price of lot
+     *
+     * @return int
+     */
+    public function getBidPrice(): int
+    {
+        // if ($this->bids->last()) {
+        //     $lastPrice = $this->bids->last()->price + $this->step;
+        // }
+
+        $lastPrice = $this->getCurrentPrice() + $this->step;
+        $priceToBid = $this->price + $this->step;
+        return $lastPrice ?? $priceToBid;
+    }
+
+    /**
+     * Get lot's price (or last bidded if exists)
+     *
+     * @return int
+     */
+    public function getCurrentPrice(): int
+    {
+        return $this->bids->last()->price ?? $this->price;
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -52,5 +78,10 @@ class Lot extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
     }
 }

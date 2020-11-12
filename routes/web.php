@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LotController;
@@ -34,15 +35,17 @@ Route::get('/logout', function () {
 });
 
 /**
- * Category resource
+ * Category section
  */
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 /**
- * Lot routes
+ * Lot section
  */
 Route::group(['middleware' => ['auth']], function () {
+    
+    // operations with LotController
     Route::get('/lots', [LotController::class, 'index']);
 
     Route::get('/add-lot', [LotController::class, 'create']);
@@ -52,11 +55,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/{lot}', [LotController::class, 'update'])->middleware('can:update,lot');
 
     Route::delete('/{lot}', [LotController::class, 'destroy'])->middleware('can:destroy,lot');
+
+    // operations with BidController
+    Route::post('/{lot}/bids', [BidController::class, 'store']);
 });
 
-
 /**
- * Others
+ * Homepage
  */
 Route::get('/', [HomeController::class, 'index']);
 

@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lot::class);
     }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
 }

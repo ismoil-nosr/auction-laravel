@@ -11,7 +11,7 @@ class LotController extends Controller
     public function index()
     {
         $lots = Lot::paginate(9);
-        return view('lot.index', compact('lots'));
+        return view('lot.list', compact('lots'));
     }
 
     /**
@@ -44,7 +44,8 @@ class LotController extends Controller
      */
     public function show(Lot $lot)
     {
-        return view('lot.view', compact('lot'));
+        $bids = $lot->bids()->latest()->get();
+        return view('lot.view', compact('lot', 'bids'));
     }
 
     /**
