@@ -44,7 +44,7 @@ class LotController extends Controller
      */
     public function show(Lot $lot)
     {
-        $bids = $lot->bids()->latest()->get();
+        $bids = $lot->bids()->latest()->get()->unique('user_id');
         return view('lot.view', compact('lot', 'bids'));
     }
 

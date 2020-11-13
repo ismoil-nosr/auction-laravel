@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LotController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserBidsController;
+use App\Http\Controllers\UserLotsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +61,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     // operations with BidController
     Route::post('/{lot}/bids', [BidController::class, 'store']);
+
+    // operations with UserLotsController
+    Route::get('/my-lots', [UserLotsController::class, 'index']);
+
+    // operations with UserBidsController
+    Route::get('/my-bids', [UserBidsController::class, 'index']);
 });
 
 /**

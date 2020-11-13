@@ -50,7 +50,7 @@
                             <th class="history__time">Время</th>
                         </tr>
                         @foreach ($bids as $bid)
-                            <tr class="history__item {{ $bid->isWinner() ? 'rates__item--win' : ''}}">
+                            <tr class="history__item {{ $bid->lot->getWinner() ? 'rates__item--win' : ''}}">
                                 <td class="history__name">{{ $bid->user->name }}</td>
                                 <td class="history__price">{{ $bid->price }}</td>
                                 <td class="">{{ $bid->getBiddedTime() }}</td>

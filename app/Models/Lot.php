@@ -92,9 +92,23 @@ class Lot extends Model
         return $this->dt_end > Carbon::now();
     }
 
+    /**
+     * Get User model of winner if exists
+     *
+     * @return mixed
+     */
+    public function getWinner()
+    {
+        if (!$this->isActive()) {
+            return $this->bids->last()->user;
+        }
+
+        return false;
+    }
+
     public function getTimeRemaing()
     {
-        $r =  $this->dt_end->diffForHumans(['syntax' => CarbonInterface::DIFF_ABSOLUTE], null, true, 2);
+        $r =  $this->dt_end->diffForHumans(['syntax' => CarbonInterface::DIFF_ABSOLUTE], null, false, 1);
         
         if ($this->dt_end < $this->dt_end ->now()) {
             $this->active = false; 
