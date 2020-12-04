@@ -25,11 +25,11 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY composer.json composer.json
 COPY composer.lock composer.lock
+
 # TODO remove prestissimo when composer hits v2
-RUN composer global require hirak/prestissimo --no-plugins --no-scripts
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
 
-# Copy app
+# Copy appd
 COPY --chown=www-data:www-data . $LARAVEL_PATH/
 COPY ./.deploy/config/php/local.ini /usr/local/etc/php/conf.d/local.ini
 RUN chown -R www-data:www-data $LARAVEL_PATH
