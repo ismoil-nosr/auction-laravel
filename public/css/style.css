@@ -468,32 +468,32 @@ h2 {
   background-repeat: no-repeat;
 }
 
-.promo__item--boards .promo__link {
+.promo__item--doski-i-lyzhi .promo__link {
   background-image: url("../img/category-1.jpg");
   background-position: 146px 8px;
 }
 
-.promo__item--attachment .promo__link {
+.promo__item--krepleniya .promo__link {
   background-image: url("../img/category-2.jpg");
   background-position: 133px 12px;
 }
 
-.promo__item--boots .promo__link {
+.promo__item--botinki .promo__link {
   background-image: url("../img/category-3.jpg");
   background-position: 144px 14px;
 }
 
-.promo__item--clothing .promo__link {
+.promo__item--odezhda .promo__link {
   background-image: url("../img/category-4.jpg");
   background-position: 127px 12px;
 }
 
-.promo__item--tools .promo__link {
+.promo__item--instrumenty .promo__link {
   background-image: url("../img/category-5.jpg");
   background-position: 123px 13px;
 }
 
-.promo__item--other .promo__link {
+.promo__item--raznoe .promo__link {
   background-image: url("../img/category-6.jpg");
   background-position: 132px 2px;
 }

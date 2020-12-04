@@ -6,7 +6,7 @@
     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
     <ul class="promo__list">
         @foreach ($categories as $item)
-            <li class="promo__item promo__item--boards">
+            <li class="promo__item promo__item--{{ $item->slug }}">
                 <a class="promo__link" href="/categories/{{ $item->slug }}">{{ $item->name }}</a>
             </li>
         @endforeach

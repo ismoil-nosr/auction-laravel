@@ -19,7 +19,3 @@ mv ./public/storage ./public/uploads
 echo "🎬 start supervisord"
 
 supervisord -c $LARAVEL_PATH/.deploy/config/supervisor.conf
-
-echo "🎬 last update"
-
-apt-get update
