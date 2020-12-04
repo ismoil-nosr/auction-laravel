@@ -10,7 +10,7 @@
             <tr class="rates__item rates__item--win">
                 <td class="rates__info">
                     <div class="rates__img">
-                        <img src="/storage/{{ $item->lot->img }}" width="54" height="40" alt="Крепления">
+                        <img src="/uploads/{{ $item->lot->img }}" width="54" height="40" alt="Крепления">
                     </div>
                     <div>
                         <h3 class="rates__title"><a href="/{{ $item->lot->slug }}">{{ $item->lot->name }}</a></h3>
@@ -26,7 +26,7 @@
             <tr class="rates__item">
                 <td class="rates__info">
                     <div class="rates__img">
-                        <img src="/storage/{{ $item->lot->img }}" width="54" height="40" alt="{{ $item->lot->name }}">
+                        <img src="/uploads/{{ $item->lot->img }}" width="54" height="40" alt="{{ $item->lot->name }}">
                     </div>
                     <h3 class="rates__title"><a href="/{{ $item->lot->slug }}">{{ $item->lot->name }}</a></h3>
                 </td>
@@ -48,7 +48,7 @@
             <tr class="rates__item rates__item--end">
                 <td class="rates__info">
                     <div class="rates__img">
-                        <img src="/storage/{{ $item->lot->img }}" width="54" height="40" alt="{{ $item->lot->name }}">
+                        <img src="/uploads/{{ $item->lot->img }}" width="54" height="40" alt="{{ $item->lot->name }}">
                     </div>
                     <h3 class="rates__title"><a href="/{{ $item->lot->slug }}">{{ $item->lot->name }}</a></h3>
                 </td>

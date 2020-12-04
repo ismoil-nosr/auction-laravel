@@ -6,7 +6,7 @@
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="/storage/{{ $lot->img }}" width="730" height="548" alt="{{ $lot->name }}">
+                    <img src="/uploads/{{ $lot->img }}" width="730" height="548" alt="{{ $lot->name }}">
                 </div>
                 <p class="lot-item__category">Категория: <span><a href="/categories/{{ $lot->category->slug }}">{{ $lot->category->name }}</a></span></p>
                 <p class="lot-item__description">

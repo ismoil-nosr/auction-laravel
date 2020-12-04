@@ -1,6 +1,6 @@
 <li class="lots__item lot {{ !$lot->isActive() ? 'rates__item--end' : '' }}">
     <div class="lot__image">
-        <img src="/storage/{{ $lot->img }}" width="350" height="260" alt="{{ $lot->name }}">
+        <img src="/uploads/{{ $lot->img }}" width="350" height="260" alt="{{ $lot->name }}">
     </div>
     <div class="lot__info">
         <span class="lot__category">{{ $lot->category->name }}</span>
