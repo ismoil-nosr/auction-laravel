@@ -10,6 +10,10 @@ echo "🎬 artisan commands"
 php artisan key:generate
 php artisan cache:clear
 php artisan migrate --no-interaction --force --seed
+php artisan storage:link
+
+echo "🎬 at least moves"
+mv public/storage public/uploads
 
 echo "🎬 start supervisord"
 
