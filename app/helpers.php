@@ -4,5 +4,9 @@ use App\Models\Category;
 
 function getCats()
 {
-    return Category::get();
+    try {
+        return Category::get();
+    } catch (\Throwable $th) {
+        logger($th);
+    }
 }
