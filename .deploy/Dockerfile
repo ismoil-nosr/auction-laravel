@@ -14,7 +14,7 @@ RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:r
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/local/bin/supervisord
 
 # Install caddy
-COPY --from=caddy:2.2.1 /usr/bin/caddy /usr/local/bin/caddy
+COPY --from=caddy:latest /usr/bin/caddy /usr/local/bin/caddy
 
 # Install PHP extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
@@ -22,7 +22,7 @@ RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
-COPY --from=composer:2.0.8 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY composer.json composer.json
 COPY composer.lock composer.lock
 # TODO remove prestissimo when composer hits v2
