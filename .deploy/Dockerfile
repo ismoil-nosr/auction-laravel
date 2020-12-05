@@ -34,6 +34,7 @@ RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -
 COPY --chown=www-data:www-data . $LARAVEL_PATH/
 COPY ./.deploy/config/php/local.ini /usr/local/etc/php/conf.d/local.ini
 RUN chown -R www-data:www-data $LARAVEL_PATH
+RUN chown -R www-data:www-data $LARAVEL_PATH/storage
 RUN chmod -R 775 $LARAVEL_PATH/storage
 
 # Set any ENVs
