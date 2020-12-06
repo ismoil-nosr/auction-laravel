@@ -37,21 +37,11 @@ cd auction-laravel/
 docker-compose up -d
 ```
 
-------------
-
 - PHP: 7.4 FPM
 - DB: MySQL 5.7.29
 - WebServer: Caddy 2.x
 - Supervisord: latest
 - Composer: latest
-
-## Troubleshootings
-**Login/Register not working**: If site has SSL enabled, put the code below into `boot` section of `app/Providers/AppServiceProvider.php`
-```php
-if (env('APP_ENV') === 'production') {
-    \Illuminate\Support\Facades\URL::forceScheme('https');
-}
-```
 
 ## Useful links
 - [Laravel Framework](https://github.com/laravel/framework "Laravel Framework")

@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot() {
+        if (env('APP_ENV') === 'production') {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+        
         view()->share('categories', getCats());
 
         Paginator::defaultView('layout.pagination');
