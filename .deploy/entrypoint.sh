@@ -9,7 +9,7 @@ echo "🎬 artisan commands"
 
 php artisan key:generate
 php artisan cache:clear
-php artisan migrate --no-interaction --force --seed
+php artisan migrate:fresh --no-interaction --force --seed
 php artisan storage:link
 
 echo "🎬 at least moves"
